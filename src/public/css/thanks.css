@@ -1,0 +1,24 @@
+.thanks__content {
+  margin-top:319px;
+  background-color: white;
+}
+
+.thanks__heading {
+  margin-bottom: 40px;
+  text-align: center;
+  color: black;
+}
+
+.form__button {
+  text-align: center;
+}
+
+.form__button-submit {
+  padding: 10px, 40px, 10px, 40px;
+  width: 120px;
+  height: 42px;
+  border: none;
+  background: blue;
+  color: #fff;
+  cursor: pointer;
+}

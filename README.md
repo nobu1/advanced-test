@@ -5,13 +5,13 @@
 
 ## 作成した目的
 
-外部の飲食店サービスは手数料を取られるので、自社で予約サービスを持ちたいため
+外部の飲食店サービスは手数料を取られるので、自社で予約サービスを持ち費用を削減するため
 
 ## アプリケーションURL
 
 - 開発環境：http://localhost/
-- phpMyAdmin：http://localhost:8080/
-マイページへのアクセスはログインが必要
+- phpMyAdmin：http://localhost:8080/  
+※マイページへのアクセスはログインが必要
 
 ## 他のレポジトリ
 
@@ -104,8 +104,7 @@
 1. Git clone https://github.com/nobu1/advanced-test.git
 1. docker-compose up -d --build
 ※MYSQLは、OSによって起動しない場合があるので、  
-それぞれのPCに合わせてdocker-compose.ymlファイル  
-を編集してください
+それぞれのPCに合わせてdocker-compose.ymlファイルを編集してください
 
 ## Laravel環境構築
 1. docker-compose exec php bash
