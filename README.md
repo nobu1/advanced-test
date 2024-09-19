@@ -9,7 +9,7 @@
 
 ## アプリケーションURL
 
-- https://github.com/nobu1/advanced-test
+- https://github.com/nobu1/advanced-test  
 マイページへのアクセスはログインが必要
 
 ## 他のレポジトリ
@@ -42,13 +42,26 @@
 
 ## テーブル設計
 ### Usersテーブル
-| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | Note |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| id | gigint unsigned | ○ |  | ○ |  |  |
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREGIN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
 | user_name | varchar(191) |  |  | ○ |  |  |
 | email | varchar(191) |  | ○ | ○ |  |  |
 | password | varchar(191) |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
+
+### Restaurantsテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| shop | varchar(255) |  |  | ○ |  |  |
+| area | varchar(255) |  |  | ○ |  |  |
+| genre | varchar(255) |  |  | ○ |  |  |
+| summary | text |  |  | ○ |  |  |
+| img_url | varchar(255) |  |  | ○ |  |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
 
 
 ## ER図
@@ -59,7 +72,8 @@
 ## Dockerビルド
 1. docker-compose 
 1. docker-compose up -d --build
-※MYSQLは、OSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlファイル  
+※MYSQLは、OSによって起動しない場合があるので、  
+それぞれのPCに合わせてdocker-compose.ymlファイル  
 を編集してください
 
 ## Laravel環境構築
