@@ -1,6 +1,6 @@
 # 飲食店予約サービス
 
-ある企業グループ会社の飲食店予約サービス
+ある企業グループ会社の飲食店予約サービス  
 < ---トップ画面の画像--- >
 
 ## 作成した目的
@@ -59,10 +59,40 @@
 | area | varchar(255) |  |  | ○ |  |  |
 | genre | varchar(255) |  |  | ○ |  |  |
 | summary | text |  |  | ○ |  |  |
-| img_url | varchar(255) |  |  | ○ |  |  |
+| img_url | varchar(2083) |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |  
 
+### Reservationsテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| date | timestamp |  |  | ○ |  |  |
+| time | timestamp |  |  | ○ |  |  |
+| number | int |  |  | ○ |  |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
+
+### Favoritesテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| user_id | bigint unsigned |  |  | ○ | users(id) |  |
+| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
+
+### Evaluationsテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| user_id | bigint unsigned |  |  | ○ | users(id) |  |
+| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| evaluation | tinyint |  |  |  |  | 1～5までの5段階評価 |
+| comment | text |  |  |  |  |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
 
 ## ER図
 
