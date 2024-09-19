@@ -9,7 +9,8 @@
 
 ## アプリケーションURL
 
-- https://github.com/nobu1/advanced-test  
+- 開発環境：http://localhost/
+- phpMyAdmin：http://localhost:8080/
 マイページへのアクセスはログインが必要
 
 ## 他のレポジトリ
@@ -100,7 +101,7 @@
 
 # 環境構築
 ## Dockerビルド
-1. docker-compose 
+1. Git clone https://github.com/nobu1/advanced-test.git
 1. docker-compose up -d --build
 ※MYSQLは、OSによって起動しない場合があるので、  
 それぞれのPCに合わせてdocker-compose.ymlファイル  
