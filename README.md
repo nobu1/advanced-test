@@ -97,7 +97,7 @@
 
 ## ER図
 
-<img src="/src/public/img/ER_Diagram_advance.jpg">
+<img src="/src/public/img/ER_diagram_advance.jpg">
 
 # 環境構築
 ## Dockerビルド
