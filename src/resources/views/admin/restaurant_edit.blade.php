@@ -45,8 +45,11 @@
                         </div>
                         <div class="form__input--area">
                             <label>地域</label>
-                            <input class="form__input-area" type="text" name="area" placeholder="都道府県を入力してください"
-                                value="{{ old('area', $restaurant->area) }}" />
+                            <select class="form__select-area" name="area">
+                                <option value="osaka">大阪府</option>
+                                <option value="tokyo">東京都</option>
+                                <option value="fukuoka">福岡県</option>
+                            </select>
                         </div>
                         <div class="form__error">
                             @error('area')
@@ -55,8 +58,13 @@
                         </div>
                         <div class="form__input--genre">
                             <label>ジャンル</label>
-                            <input class="form__input-genre" type="text" name="genre" placeholder="例：寿司、焼肉"
-                                value="{{ old('genre', $restaurant->genre) }}" />
+                            <select class="form__select-genre" name="genre">
+                                <option value="italian">イタリアン</option>
+                                <option value="ramen">ラーメン</option>
+                                <option value="izakaya">居酒屋</option>
+                                <option value="sushi">寿司</option>
+                                <option value="yakiniku">焼肉</option>
+                            </select>
                         </div>
                         <div class="form__error">
                             @error('genre')

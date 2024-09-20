@@ -25,14 +25,32 @@
             <div class="restaurant__group">
                 <div class="restaurant__group-show">
                     <div class="restaurant--shop">
-                        <label><</label>
-                        <p>{{ $restaurant->shop }}</p>
+                        <label>
+                            << /label>
+                                <p>{{ $restaurant->shop }}</p>
                     </div>
                     <div class="restaurant--url">
-                        <img src="{{ asset('img/'.$restaurant->img_url) }}">
+                        <img src="{{ asset('img/' . $restaurant->img_url) }}">
                     </div>
                     <div class="restaurant--area-genre">
-                        <label>#{{ $restaurant->area }}#{{ $restaurant->genre }}</label>
+                        @if ($restaurant->area == 'osaka')
+                            #大阪府
+                        @elseif ($restaurant->area == 'tokyo')
+                            #東京都
+                        @elseif ($restaurant->area == 'fukuoka')
+                            #福岡県
+                        @endif
+                        @if ($restaurant->genre == 'italian')
+                            #イタリアン
+                        @elseif ($restaurant->genre == 'ramen')
+                            #ラーメン
+                        @elseif ($restaurant->genre == 'izakaya')
+                            #居酒屋
+                        @elseif ($restaurant->genre == 'sushi')
+                            #寿司
+                        @elseif ($restaurant->genre == 'yakiniku')
+                            #焼肉
+                        @endif
                     </div>
                     <div class="restaurant--summary">
                         <p>{{ $restaurant->summary }}</p>

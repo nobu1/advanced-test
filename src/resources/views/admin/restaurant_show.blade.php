@@ -30,11 +30,31 @@
                     </div>
                     <div class="restaurant--area">
                         <label>地域</label>
-                        <p>{{ $restaurant->area }}</p>
+                        @if ($restaurant->area == 'osaka')
+                            <p>大阪府</p>
+                        @elseif ($restaurant->area == 'tokyo')
+                            <p>東京都</p>
+                        @elseif ($restaurant->area == 'fukuoka')
+                            <p>福岡県</p>
+                        @else
+                            <p> </p>
+                        @endif
                     </div>
                     <div class="restaurant--genre">
                         <label>ジャンル</label>
-                        <p>{{ $restaurant->genre }}</p>
+                        @if ($restaurant->genre == 'italian')
+                            <p>イタリアン</p>
+                        @elseif ($restaurant->genre == 'ramen')
+                            <p>ラーメン</p>
+                        @elseif ($restaurant->genre == 'izakaya')
+                            <p>居酒屋</p>
+                        @elseif ($restaurant->genre == 'sushi')
+                            <p>寿司</p>
+                        @elseif ($restaurant->genre == 'yakiniku')
+                            <p>焼肉</p>
+                        @else
+                            <p> </p>
+                        @endif
                     </div>
                     <div class="restaurant--summary">
                         <label>店舗概要</label>

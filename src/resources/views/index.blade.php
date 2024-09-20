@@ -21,19 +21,19 @@
         <div class="header__right">
             <select class="form__select-area" name="area">
                 <option value="">All area</option>
-                <option value="">全て</option>
-                <option value="1">男性</option>
-                <option value="2">女性</option>
-                <option value="3">その他</option>
+                <option value="osaka">大阪府</option>
+                <option value="tokyo">東京都</option>
+                <option value="fukuoka">福岡県</option>
             </select>
             <select class="form__select-genre" name="genre">
                 <option value="">All genre</option>
-                <option value="delivery">商品のお届けについて</option>
-                <option value="replace">商品の交換について</option>
-                <option value="trouble">商品トラブル</option>
-                <option value="contact">ショップへのお問い合わせ</option>
-                <option value="others">その他</option>
+                <option value="italian">イタリアン</option>
+                <option value="ramen">ラーメン</option>
+                <option value="izakaya">居酒屋</option>
+                <option value="sushi">寿司</option>
+                <option value="yakiniku">焼肉</option>
             </select>
+            <button class="form__button-search" type="submit" name="search">検索</button>
             <input class="form__input-keyword" type="text" name="keyword" placeholder="Search ..."
                 value="{{ old('keyword') }}" />
         </div>
@@ -51,7 +51,28 @@
                             <p>{{ $restaurant->shop ?: '' }}</p>
                         </div>
                         <div class="restaurant--area-genre">
-                            <p>#{{ $restaurant->area ?: '' }}#{{ $restaurant->genre ?: '' }}</p>
+                            @if ($restaurant->area == 'osaka')
+                                #大阪府
+                            @elseif ($restaurant->area == 'tokyo')
+                                #東京都
+                            @elseif ($restaurant->area == 'fukuoka')
+                                #福岡県
+                            @else
+                                #
+                            @endif
+                            @if ($restaurant->genre == 'italian')
+                                #イタリアン
+                            @elseif ($restaurant->genre == 'ramen')
+                                #ラーメン
+                            @elseif ($restaurant->genre == 'izakaya')
+                                #居酒屋
+                            @elseif ($restaurant->genre == 'sushi')
+                                #寿司
+                            @elseif ($restaurant->genre == 'yakiniku')
+                                #焼肉
+                            @else
+                                #
+                            @endif
                         </div>
                         <a href="{{ route('index.detail', $restaurant) }}"><button>詳しく見る</button></a>
                     </div>

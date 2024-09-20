@@ -22,7 +22,6 @@ class AdminController extends Controller
 
     public function showRestaurant(Restaurant $restaurant)
     {
-        // $restaurant = Restaurant::find($id);
         return view('admin.restaurant_show', compact('restaurant'));
     }
 
