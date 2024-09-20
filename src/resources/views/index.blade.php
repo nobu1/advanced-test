@@ -18,24 +18,28 @@
                 Rese
             </h2>
         </div>
-        <div class="header__right">
-            <select class="form__select-area" name="area">
-                <option value="">All area</option>
-                <option value="osaka">大阪府</option>
-                <option value="tokyo">東京都</option>
-                <option value="fukuoka">福岡県</option>
-            </select>
-            <select class="form__select-genre" name="genre">
-                <option value="">All genre</option>
-                <option value="italian">イタリアン</option>
-                <option value="ramen">ラーメン</option>
-                <option value="izakaya">居酒屋</option>
-                <option value="sushi">寿司</option>
-                <option value="yakiniku">焼肉</option>
-            </select>
-            <button class="form__button-search" type="submit" name="search">検索</button>
-            <input class="form__input-keyword" type="text" name="keyword" placeholder="Search ..."
-                value="{{ old('keyword') }}" />
+        <form class="form" action="{{ route('index.search') }}" method="POST">
+            @csrf
+            <div class="header__right">
+                <select class="form__select-area" name="area">
+                    <option value="">All area</option>
+                    <option value="osaka">大阪府</option>
+                    <option value="tokyo">東京都</option>
+                    <option value="fukuoka">福岡県</option>
+                </select>
+                <select class="form__select-genre" name="genre">
+                    <option value="">All genre</option>
+                    <option value="italian">イタリアン</option>
+                    <option value="ramen">ラーメン</option>
+                    <option value="izakaya">居酒屋</option>
+                    <option value="sushi">寿司</option>
+                    <option value="yakiniku">焼肉</option>
+                </select>
+                <button class="form__button-search" type="submit" name="search">検索</button>
+                <input class="form__input-keyword" type="text" name="keyword" placeholder="Search ..."
+                    value="{{ old('keyword') }}" />
+        </form>
+
         </div>
     </header>
 

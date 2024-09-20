@@ -23,6 +23,7 @@ use App\Http\Controllers\AdminController;
 // Main Page
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('index.detail');
+Route::post('/', [ShopController::class, 'search'])->name('index.search');
 
 // Auth Page
 Route::post('/register', [AuthController::class, 'register']);
