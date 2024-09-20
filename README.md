@@ -46,7 +46,7 @@
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREGIN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
-| user_name | varchar(191) |  |  | ○ |  |  |
+| name | varchar(191) |  |  | ○ |  |  |
 | email | varchar(191) |  | ○ | ○ |  |  |
 | password | varchar(191) |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
@@ -69,9 +69,9 @@
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
 | shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
-| date | timestamp |  |  | ○ |  |  |
-| time | timestamp |  |  | ○ |  |  |
-| number | int |  |  | ○ |  |  |
+| date | date |  |  | ○ |  |  |
+| time | time |  |  | ○ |  |  |
+| number | integer |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |  
 

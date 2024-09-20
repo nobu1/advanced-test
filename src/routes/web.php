@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 
@@ -15,10 +16,13 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+// Main Page
+Route::get('/', [ShopController::class, 'index']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('index.detail');
 
 // Auth Page
 Route::post('/register', [AuthController::class, 'register']);
@@ -31,4 +35,11 @@ Route::middleware('auth')->group(function () {
 // Admin Page
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/mypage/restaurant', [AdminController::class, 'indexRestaurant'])->name('restaurant.index');
+    Route::get('/mypage/restaurant/create', [AdminController::class, 'createRestaurant']);
+    Route::post('/mypage/restaurant/create', [AdminController::class, 'storeRestaurant'])->name('restaurant.store');
+    Route::get('/mypage/restaurant/{restaurant}', [AdminController::class, 'showRestaurant'])->name('restaurant.show');
+    Route::get('/mypage/restaurant/{restaurant}/edit', [AdminController::class, 'editRestaurant'])->name('restaurant.edit');
+    Route::patch('/mypage/restaurant/{restaurant}', [AdminController::class, 'updateRestaurant'])->name('restaurant.update');
+    Route::delete('/mypage/restaurant/{restaurant}', [AdminController::class, 'destroyRestaurant'])->name('restaurant.destroy');
 });
