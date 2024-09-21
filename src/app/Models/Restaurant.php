@@ -16,4 +16,9 @@ class Restaurant extends Model
         'summary',
         'img_url',
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

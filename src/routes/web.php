@@ -24,6 +24,9 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('index.detail');
 Route::post('/', [ShopController::class, 'search'])->name('index.search');
+Route::middleware('auth')->group(function () {
+    Route::post('/detail/{shop_id}', [ShopController::class, 'reserve'])->name('index.reserve');
+});
 
 // Auth Page
 Route::post('/register', [AuthController::class, 'register']);

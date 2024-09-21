@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 </head>
 
 <body>
@@ -35,9 +35,9 @@
                     <option value="sushi">寿司</option>
                     <option value="yakiniku">焼肉</option>
                 </select>
-                <button class="form__button-search" type="submit" name="search">検索</button>
                 <input class="form__input-keyword" type="text" name="keyword" placeholder="Search ..."
                     value="{{ old('keyword') }}" />
+                <button class="form__button-search" type="submit" name="search">検索</button>
         </form>
 
         </div>

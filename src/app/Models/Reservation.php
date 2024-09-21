@@ -10,9 +10,20 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'shop_id',
+        'restaurant_id',
         'date',
         'time',
         'number',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 }

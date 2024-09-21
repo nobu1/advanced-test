@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Reservation;
+use App\Http\Requests\ReservationRegisterRequest;
 
 class ShopController extends Controller
 {
@@ -44,5 +46,17 @@ class ShopController extends Controller
     {
         $restaurant = Restaurant::find($id);
         return view('detail', compact('restaurant'));
+    }
+
+    public function reserve(ReservationRegisterRequest $request)
+    {
+        $reservation = Reservation::create([
+            'restaurant_id' => $request->restaurant_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'number' => $request->number,
+            'user_id' => $request->user_id,
+        ]);
+        return back()->with('message', '予約しました');
     }
 }

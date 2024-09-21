@@ -73,7 +73,8 @@
 | time | time |  |  | ○ |  |  |
 | number | integer |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
-| updated_at | timestamp |  |  |  |  |  |  
+| updated_at | timestamp |  |  |  |  |  |
+| user_id | bigint unsigned |  |  | ○ | users(id) |  |  
 
 ### Favoritesテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
