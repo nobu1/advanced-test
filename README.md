@@ -68,7 +68,7 @@
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
-| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| restaurant_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
 | date | date |  |  | ○ |  |  |
 | time | time |  |  | ○ |  |  |
 | number | integer |  |  | ○ |  |  |
