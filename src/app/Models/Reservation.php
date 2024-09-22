@@ -15,6 +15,7 @@ class Reservation extends Model
         'time',
         'number',
         'user_id',
+        'revoke_flag',
     ];
 
     public function user()

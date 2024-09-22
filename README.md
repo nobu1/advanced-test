@@ -74,7 +74,8 @@
 | number | integer |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
-| user_id | bigint unsigned |  |  | ○ | users(id) |  |  
+| user_id | bigint unsigned |  |  | ○ | users(id) |  |
+| revoke_flag | boolean |  |  |  |  | 0：予約、1：予約取消 |  
 
 ### Favoritesテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |

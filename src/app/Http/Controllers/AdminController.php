@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Reservation;
 use App\Http\Requests\ShopRegisterRequest;
+use App\Http\Requests\ReservationRegisterRequest;
 
 class AdminController extends Controller
 {
+    // My page functions
     public function index()
     {
         return view('admin.index');
     }
 
+
+    // Restaurant functions
     public function indexRestaurant()
     {
         $restaurants = Restaurant::all();
@@ -64,10 +68,35 @@ class AdminController extends Controller
         return back()->with('message', '飲食店情報を保存しました');
     }
 
+
+    // Reservation functions
     public function indexReservation()
     {
-        $reservations = Reservation::where('user_id', auth()->id())->get();
+        $reservations = Reservation::where('user_id', auth()->id())->
+                            where('revoke_flag', '!=', 1)->get();
 
         return view('admin.reservation_index', compact('reservations'));
+    }
+
+    public function showReservation(Reservation $reservation)
+    {
+        return view('admin.reservation_edit', compact('reservation'));
+    }
+
+    public function changeReservation(ReservationRegisterRequest $request)
+    {
+        $reservationID = $request->input('reservationID');
+
+        if ($request->has('reserveRevoke')) {         
+            Reservation::find($reservationID)->update(['revoke_flag' => 1]);
+
+            return redirect()->route('reservation.index')->with('message', '予約を取り消しました');
+        } else {
+            $reservation = $request->all();
+            Reservation::find($reservationID)->update($reservation);
+
+            return redirect()->route('reservation.index')->with('message', '予約を変更しました');
+        }
+
     }
 }

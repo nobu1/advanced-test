@@ -36,9 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-// Admin Page
+// My Page
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [AdminController::class, 'index'])->name('admin.index');
+
+    // For Restaurants model
     Route::get('/mypage/restaurant', [AdminController::class, 'indexRestaurant'])->name('restaurant.index');
     Route::get('/mypage/restaurant/create', [AdminController::class, 'createRestaurant']);
     Route::post('/mypage/restaurant/create', [AdminController::class, 'storeRestaurant'])->name('restaurant.store');
@@ -46,6 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/restaurant/{restaurant}/edit', [AdminController::class, 'editRestaurant'])->name('restaurant.edit');
     Route::patch('/mypage/restaurant/{restaurant}', [AdminController::class, 'updateRestaurant'])->name('restaurant.update');
     Route::delete('/mypage/restaurant/{restaurant}', [AdminController::class, 'destroyRestaurant'])->name('restaurant.destroy');
+
+    // For Reservations model
     Route::get('/mypage/reservation', [AdminController::class, 'indexReservation'])->name('reservation.index');
+    Route::get('/mypage/reservation/{reservation}', [AdminController::class, 'showReservation'])->name('reservation.show');
+    Route::patch('/mypage/reservation/{reservation}', [AdminController::class, 'changeReservation'])->name('reservation.change');
     
 });

@@ -34,7 +34,7 @@
                         <p>{{ $reservation->restaurant->shop ?: '' }}</p>
                     </div>
                     <div class="reservation--date">
-                        <label>予約日</label>
+                        <label>Shop</label>
                         <p>{{ $reservation->date ?: '' }}</p>
                     </div>
                     <div class="reservation--time">
@@ -45,13 +45,14 @@
                         <label>Number</label>
                         <p>{{ $reservation->number ?: '' }}人</p>
                     </div>
+                    <a href="{{ route('reservation.show', $reservation->id) }}"><button>予約変更</button></a>
                 </div>
 
                 <div class="restaurant__group">
                     <div class="restaurant__group-show">
                         <div class="restaurant--shop">
                             <label>店舗名</label>
-                            <a href="">
+                            <a href="{{ route('index.detail', $reservation->restaurant->id) }}">
                                 <p>{{ $reservation->restaurant->shop ?: '' }}</p>
                             </a>
                         </div>
