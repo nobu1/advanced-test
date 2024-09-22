@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/reservation.css') }}" />
 </head>
 
 <body>
@@ -15,34 +15,53 @@
     <header class="header">
         <div class="header__left">
             <h2 class="header__h2">
-                飲食店一覧
+                予約店舗一覧
             </h2>
         </div>
     </header>
 
     <main>
-        <div class="restaurant__content">
+        <div class="favorite__content">
             @if (session('message'))
                 <div>
                     {{ session('message') }}
                 </div>
             @endif
-            @foreach ($restaurants as $restaurant)
+            @foreach ($reservations as $reservation)
+                <div class="reservation__group">
+                    <div class="reservation--name">
+                        <label>Shop</label>
+                        <p>{{ $reservation->restaurant->shop ?: '' }}</p>
+                    </div>
+                    <div class="reservation--date">
+                        <label>予約日</label>
+                        <p>{{ $reservation->date ?: '' }}</p>
+                    </div>
+                    <div class="reservation--time">
+                        <label>Time</label>
+                        <p>{{ $reservation->time ?: '' }}</p>
+                    </div>
+                    <div class="reservation--number">
+                        <label>Number</label>
+                        <p>{{ $reservation->number ?: '' }}人</p>
+                    </div>
+                </div>
+
                 <div class="restaurant__group">
                     <div class="restaurant__group-show">
                         <div class="restaurant--shop">
                             <label>店舗名</label>
-                            <a href="{{ route('restaurant.show', $restaurant) }}">
-                                <p>{{ $restaurant->shop ?: '' }}</p>
+                            <a href="">
+                                <p>{{ $reservation->restaurant->shop ?: '' }}</p>
                             </a>
                         </div>
                         <div class="restaurant--area">
                             <label>地域</label>
-                            @if ($restaurant->area == 'osaka')
+                            @if ($reservation->restaurant->area == 'osaka')
                                 <p>大阪府</p>
-                            @elseif ($restaurant->area == 'tokyo')
+                            @elseif ($reservation->restaurant->area == 'tokyo')
                                 <p>東京都</p>
-                            @elseif ($restaurant->area == 'fukuoka')
+                            @elseif ($reservation->restaurant->area == 'fukuoka')
                                 <p>福岡県</p>
                             @else
                                 <p> </p>
@@ -50,15 +69,15 @@
                         </div>
                         <div class="restaurant--genre">
                             <label>ジャンル</label>
-                            @if ($restaurant->genre == 'italian')
+                            @if ($reservation->restaurant->genre == 'italian')
                                 <p>イタリアン</p>
-                            @elseif ($restaurant->genre == 'ramen')
+                            @elseif ($reservation->restaurant->genre == 'ramen')
                                 <p>ラーメン</p>
-                            @elseif ($restaurant->genre == 'izakaya')
+                            @elseif ($reservation->restaurant->genre == 'izakaya')
                                 <p>居酒屋</p>
-                            @elseif ($restaurant->genre == 'sushi')
+                            @elseif ($reservation->restaurant->genre == 'sushi')
                                 <p>寿司</p>
-                            @elseif ($restaurant->genre == 'yakiniku')
+                            @elseif ($reservation->restaurant->genre == 'yakiniku')
                                 <p>焼肉</p>
                             @else
                                 <p> </p>
@@ -66,11 +85,10 @@
                         </div>
                         <div class="restaurant--summary">
                             <label>店舗概要</label>
-                            <p>{{ $restaurant->summary ?: '' }}</p>
+                            <p>{{ $reservation->restaurant->summary ?: '' }}</p>
                         </div>
                         <div class="restaurant--url">
-                            <label>店舗画像URL</label>
-                            <p>{{ $restaurant->img_url ?: '' }}</p>
+                            <img src="{{ asset('img/' . $reservation->restaurant->img_url ?: '') }}" />
                         </div>
                     </div>
                 </div>

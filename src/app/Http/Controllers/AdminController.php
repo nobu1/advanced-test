@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Reservation;
 use App\Http\Requests\ShopRegisterRequest;
 
 class AdminController extends Controller
@@ -61,5 +62,12 @@ class AdminController extends Controller
         ]);
 
         return back()->with('message', '飲食店情報を保存しました');
+    }
+
+    public function indexReservation()
+    {
+        $reservations = Reservation::where('user_id', auth()->id())->get();
+
+        return view('admin.reservation_index', compact('reservations'));
     }
 }

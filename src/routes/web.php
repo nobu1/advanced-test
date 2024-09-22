@@ -46,4 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/restaurant/{restaurant}/edit', [AdminController::class, 'editRestaurant'])->name('restaurant.edit');
     Route::patch('/mypage/restaurant/{restaurant}', [AdminController::class, 'updateRestaurant'])->name('restaurant.update');
     Route::delete('/mypage/restaurant/{restaurant}', [AdminController::class, 'destroyRestaurant'])->name('restaurant.destroy');
+    Route::get('/mypage/reservation', [AdminController::class, 'indexReservation'])->name('reservation.index');
+    
 });
