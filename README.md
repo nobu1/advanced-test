@@ -84,7 +84,8 @@
 | user_id | bigint unsigned |  |  | ○ | users(id) |  |
 | shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
 | created_at | timestamp |  |  |  |  |  |
-| updated_at | timestamp |  |  |  |  |  |  
+| updated_at | timestamp |  |  |  |  |  |
+| revoke_flag | boolean |  |  |  |  | 0：お気に入り追加、1：お気に入り削除 |  
 
 ### Evaluationsテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
