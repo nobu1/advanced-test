@@ -42,29 +42,46 @@
 - Laravel 8.83
 
 ## テーブル設計
-### Usersテーブル
+### usersテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREGIN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
 | name | varchar(191) |  |  | ○ |  |  |
 | email | varchar(191) |  | ○ | ○ |  |  |
 | password | varchar(191) |  |  | ○ |  |  |
+| role | varchar(255) |  |  |  |  |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |  
 
-### Restaurantsテーブル
+### restaurantsテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
 | shop | varchar(255) |  |  | ○ |  |  |
-| area | varchar(255) |  |  | ○ |  |  |
-| genre | varchar(255) |  |  | ○ |  |  |
+| area_id | bigint unsigned |  |  | ○ | areas(id) |  |
+| genre_id | bigint unsigned |  |  | ○ | genres(id) |  |
 | summary | text |  |  | ○ |  |  |
 | img_url | varchar(2083) |  |  | ○ |  |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |  
 
-### Reservationsテーブル
+### areasテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| area | varchar(255) |  |  | ○ |  |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
+
+### genresテーブル
+| カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| id | bigint unsigned | ○ |  | ○ |  |  |
+| genre | varchar(255) |  |  | ○ |  |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |  
+
+### reservationsテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
@@ -77,22 +94,22 @@
 | user_id | bigint unsigned |  |  | ○ | users(id) |  |
 | revoke_flag | boolean |  |  |  |  | 0：予約、1：予約取消 |  
 
-### Favoritesテーブル
+### favoritesテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
 | user_id | bigint unsigned |  |  | ○ | users(id) |  |
-| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| restaurant_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
 | revoke_flag | boolean |  |  |  |  | 0：お気に入り追加、1：お気に入り削除 |  
 
-### Evaluationsテーブル
+### evaluationsテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | id | bigint unsigned | ○ |  | ○ |  |  |
 | user_id | bigint unsigned |  |  | ○ | users(id) |  |
-| shop_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
+| restaurant_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
 | evaluation | tinyint |  |  |  |  | 1～5までの5段階評価 |
 | comment | text |  |  |  |  |  |
 | created_at | timestamp |  |  |  |  |  |
