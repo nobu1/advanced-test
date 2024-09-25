@@ -62,7 +62,7 @@
                     </div>
                     <div class="restaurant--url">
                         <label>店舗画像URL</label>
-                        <p>{{ $restaurant->img_url }}</p>
+                        <img src="{{ asset('img/' . $restaurant->img_url) }}">
                     </div>
                     <a href="{{ route('restaurant.edit', $restaurant) }}"><button class="form__button-create"
                             type="submit" name="edit">編集</button></a>

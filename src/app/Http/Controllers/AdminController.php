@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Reservation;
+use App\Models\Area;
+use App\Models\Genre;
 use App\Http\Requests\ShopRegisterRequest;
 use App\Http\Requests\ReservationRegisterRequest;
 
@@ -57,12 +59,20 @@ class AdminController extends Controller
 
     public function storeRestaurant(ShopRegisterRequest $request)
     {
+        $area = Area::create([
+            'area' => $request->area  
+        ]);
+
+        $genre = Genre::create([
+            'genre' => $request->genre
+        ]);
+        
         $restaurant = Restaurant::create([
             'shop' => $request->shop,
-            'area' => $request->area,
-            'genre' => $request->genre,
             'summary' => $request->summary,
-            'img_url' => $request->img_url
+            'img_url' => $request->img_url,
+            'area_id' => $area->id,
+            'genre_id' => $genre->id    
         ]);
 
         return back()->with('message', '飲食店情報を保存しました');

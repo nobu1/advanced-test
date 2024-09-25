@@ -70,7 +70,7 @@
                         </div>
                         <div class="restaurant--url">
                             <label>店舗画像URL</label>
-                            <p>{{ $restaurant->img_url ?: '' }}</p>
+                            <img src="{{ asset('img/' . $restaurant->img_url) }}">
                         </div>
                     </div>
                 </div>

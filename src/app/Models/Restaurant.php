@@ -11,14 +11,24 @@ class Restaurant extends Model
 
     protected $fillable = [
         'shop',
-        'area',
-        'genre',
         'summary',
         'img_url',
+        'area_id',
+        'genre_id',
     ];
 
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 }
