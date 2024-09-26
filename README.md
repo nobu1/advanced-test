@@ -92,7 +92,7 @@
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
 | user_id | bigint unsigned |  |  | ○ | users(id) |  |
-| revoke_flag | boolean |  |  |  |  | 0：予約、1：予約取消 |  
+| revoke_flag | boolean |  |  |  |  | 0：予約取消、1：予約 |  
 
 ### favoritesテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
@@ -102,7 +102,7 @@
 | restaurant_id | bigint unsigned |  |  | ○ | restaurants(id) |  |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
-| revoke_flag | boolean |  |  |  |  | 0：お気に入り追加、1：お気に入り削除 |  
+| revoke_flag | boolean |  |  |  |  | 0：お気に入り削除、1：お気に入り追加 |  
 
 ### evaluationsテーブル
 | カラム名 | 型 | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY | Note |
