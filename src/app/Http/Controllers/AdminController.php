@@ -9,13 +9,17 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Http\Requests\ShopRegisterRequest;
 use App\Http\Requests\ReservationRegisterRequest;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     // My page functions
     public function index()
     {
-        return view('admin.index');
+        $reservations = Reservation::where('user_id', auth()->id())->
+                                     where('revoke_flag', '!=', 0)->get();
+
+        return view('admin.index', compact('reservations'));
     }
 
 
@@ -83,7 +87,7 @@ class AdminController extends Controller
     public function indexReservation()
     {
         $reservations = Reservation::where('user_id', auth()->id())->
-                            where('revoke_flag', '!=', 1)->get();
+                            where('revoke_flag', '!=', 0)->get();
 
         return view('admin.reservation_index', compact('reservations'));
     }
@@ -98,10 +102,17 @@ class AdminController extends Controller
         $reservationID = $request->input('reservationID');
 
         if ($request->has('reserveRevoke')) {         
-            Reservation::find($reservationID)->update(['revoke_flag' => 1]);
+            Reservation::find($reservationID)->update(['revoke_flag' => 0]);
 
             return redirect()->route('reservation.index')->with('message', '予約を取り消しました');
         } else {
+            $currentTime = Carbon::now();
+            $reservationTime = Carbon::parse($request->date.' '.$request->time);
+        
+            if ($reservationTime->lt($currentTime)) {
+                return back()->with('message', '現在よりも前の日時では予約変更できません');
+            }
+
             $reservation = $request->all();
             Reservation::find($reservationID)->update($reservation);
 

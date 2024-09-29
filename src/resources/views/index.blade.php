@@ -8,6 +8,7 @@
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    {{-- <script src="{{ asset('js/main-index.js') }}" defer></script> --}}
 </head>
 
 <body>
@@ -47,43 +48,45 @@
         <div class="restaurant__content">
             @foreach ($restaurants as $restaurant)
                 <div class="restaurant__group">
-                    <div class="restaurant__group-show">
-                        <div class="restaurant--url">
-                            <img src="{{ asset('img/' . $restaurant->img_url) }}">
-                        </div>
-                        <div class="restaurant--shop">
-                            <p>{{ $restaurant->shop ?: '' }}</p>
-                        </div>
-                        <div class="restaurant--area-genre">
-                            @if ($restaurant->area == 'osaka')
-                                #大阪府
-                            @elseif ($restaurant->area == 'tokyo')
-                                #東京都
-                            @elseif ($restaurant->area == 'fukuoka')
-                                #福岡県
-                            @else
-                                #
-                            @endif
-                            @if ($restaurant->genre == 'italian')
-                                #イタリアン
-                            @elseif ($restaurant->genre == 'ramen')
-                                #ラーメン
-                            @elseif ($restaurant->genre == 'izakaya')
-                                #居酒屋
-                            @elseif ($restaurant->genre == 'sushi')
-                                #寿司
-                            @elseif ($restaurant->genre == 'yakiniku')
-                                #焼肉
-                            @else
-                                #
-                            @endif
-                        </div>
-                        <a href="{{ route('index.detail', $restaurant) }}"><button>詳しく見る</button></a>
+                    <div class="restaurant--url">
+                        <img src="{{ asset('img/' . $restaurant->img_url) }}">
                     </div>
+                    <div class="restaurant--shop">
+                        <p>{{ $restaurant->shop ?: '' }}</p>
+                    </div>
+                    <div class="restaurant--area-genre">
+                        @if ($restaurant->area->area == 'osaka')
+                            #大阪府
+                        @elseif ($restaurant->area->area == 'tokyo')
+                            #東京都
+                        @elseif ($restaurant->area->area == 'fukuoka')
+                            #福岡県
+                        @else
+                            #
+                        @endif
+                        @if ($restaurant->genre->genre == 'italian')
+                            #イタリアン
+                        @elseif ($restaurant->genre->genre == 'ramen')
+                            #ラーメン
+                        @elseif ($restaurant->genre->genre == 'izakaya')
+                            #居酒屋
+                        @elseif ($restaurant->genre->genre == 'sushi')
+                            #寿司
+                        @elseif ($restaurant->genre->genre == 'yakiniku')
+                            #焼肉
+                        @else
+                            #
+                        @endif
+                    </div>
+                    <a href="{{ route('index.detail', $restaurant) }}"><button>詳しく見る</button></a>
+                    <a href="{{ route('index.addFavorite', $restaurant->id) }}"><button
+                            id="add-favorite">お気に入り追加</button></a>
+                    <a href="{{ route('index.deleteFavorite', $restaurant->id) }}"><button
+                            id="delete-favorite">お気に入り削除</button></a>
                 </div>
-                <hr>
             @endforeach
         </div>
+        <hr>
     </main>
 </body>
 

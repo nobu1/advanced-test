@@ -27,6 +27,9 @@
                     {{ session('message') }}
                 </div>
             @endif
+
+            <a href="{{ route('restaurant.create') }}"><button>飲食店追加</button></a>
+            
             @foreach ($restaurants as $restaurant)
                 <div class="restaurant__group">
                     <div class="restaurant__group-show">

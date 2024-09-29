@@ -22,6 +22,16 @@ class Restaurant extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
     public function area()
     {
         return $this->belongsTo(Area::class);
